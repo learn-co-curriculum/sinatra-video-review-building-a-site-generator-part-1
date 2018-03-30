@@ -1,0 +1,1177 @@
+{
+            title: "Building a SiteGenerator Part 1 - YouTube",
+         host_url: "https://www.youtube.com/watch?v=wXq-Na6mZuk",
+        presenter: "Learn.co",
+           length: "43:50",
+   slides_summary: [
+        {
+           start_offset: "00:00",
+             end_offset: "00:31",
+                bullets: [
+                "here cool",
+                "um all right so you know feel free to",
+                "ask questions interrupt me thinking",
+                "reading when we're talking about yield",
+                "yesterday or the other day when there's",
+                "a really cool domain or use case for",
+                "like when you yield becomes really",
+                "helpful I'm not gonna thought I'd walk",
+                "us through that in this project what we",
+                "build is basically like a little music",
+                "library kind of jukebox in the command"
+            ]
+        },
+        {
+           start_offset: "00:31",
+             end_offset: "01:03",
+                bullets: [
+                "line so it's really solved but you say",
+                "you know music library",
+                "try the last time didn't work so if I",
+                "say lists songs",
+                "alright it prints out all the songs and",
+                "if I say lists",
+                "genres it prints out all the genres and",
+                "this kind of like a pretty common",
+                "pattern like you could imagine if this",
+                "is like a music website you'd want to be",
+                "abl  e to like see a page that listed all",
+                "the genres on the site right yeah cool"
+            ]
+        },
+        {
+           start_offset: "01:03",
+             end_offset: "01:32",
+                bullets: [
+                "our code shouldn't really care",
+                "about how the program what were the",
+                "programs interfaces right now we're",
+                "if I wanted to basically",
+                "change this interface and make this",
+                "application work through let's say a",
+                "browser in HTML that should be pretty",
+                "easy I'm using well designed objects and"
+            ]
+        },
+        {
+           start_offset: "01:32",
+             end_offset: "02:04",
+                bullets: [
+                "I'll show you guys that also so what I",
+                "want to basically do is generate a an",
+                "HTML page for each of these ideas so",
+                "like I want like a songs index page and",
+                "I want an artist's index page not on a",
+                "genres in this page and then I want like",
+                "each artist to have their own page and",
+                "each genre have their own page each song",
+                "have its own code that kind of makes",
+                "sense yeah that's the feature I'm going",
+                "for and if I look at this kind of what I",
+                "have what I have in this code base is an",
+                "artist class that represents the concept"
+            ]
+        },
+        {
+           start_offset: "02:04",
+             end_offset: "02:33",
+                bullets: [
+                "of an artist and it has that persistence",
+                "pattern so that artist can be saved into",
+                "memory all these objects relate to each",
+                "other so I can",
+                "ask an artist in fact let's play with us",
+                "a little bit I'll show you kind of some",
+                "of the domain um so in my rake file",
+                "which is a way to run tasks I have",
+                "something called a console go on here",
+                "let me say Rick console haha and now",
+                "I've basically entered this like IRB"
+            ]
+        },
+        {
+           start_offset: "02:33",
+             end_offset: "03:06",
+                bullets: [
+                "We can use rake to run console commands similar to IRB"
+            ]
+        },
+        {
+           start_offset: "03:06",
+             end_offset: "03:32",
+                bullets: [
+                "this one file",
+                "I now can run it in two different ways I",
+                "can say rake hello and that's just going",
+                "to run the hello tasks or I can say R a",
+                "console so rake is kind of a little a",
+                "little Ruby DSL for basically building",
+                "what we call tasks and without having uh",
+                "so they create all these different Ruby",
+                "files and things like that so it kind of",
+                "makes sense yeah you rake with rails or",
+                "you do rake routes sailing yeah various",
+                "ideas are great exactly"
+            ]
+        },
+        {
+           start_offset: "03:32",
+             end_offset: "04:03",
+                bullets: [
+                "gems use rake",
+                "rake is basically the Ruby's build",
+                "system so it's really common to see yeah",
+                "okay file I load my environment and",
+                "again this is kind of also we know",
+                "whenever i pair with you guys or do an",
+                "assessment um this is the way I always",
+                "want you guys to explain your code which",
+                "is that any program has an entry point",
+                "when I type in rake console what I want",
+                "to know is what happens next I want you",
+                "know I think of programming is kind of",
+                "like a bunch of dominoes and right now",
+                "that would tip over the first domino and",
+                "I want to know how it's going to hit the"
+            ]
+        },
+        {
+           start_offset: "04:03",
+             end_offset: "04:33",
+                bullets: [
+                "second Domino third domino on the fourth",
+                "Domino and the fifth and so forth so now",
+                "it's I've been rate consul the first",
+                "thing that happens is it goes into my",
+                "environment and over here I can see that",
+                "it's basically a loading bundler so all",
+                "these gems are going to be loaded which",
+                "right now is basically our spec cry and",
+                "require all and then it defines a simple",
+                "module called concerns which is busy to",
+                "setting up a name",
+                "we'll talk about modules later you guys",
+                "are gonna learn about them so don't know",
+                "just know that it's kind of like uh in"
+            ]
+        },
+        {
+           start_offset: "04:33",
+             end_offset: "05:03",
+                bullets: [
+                "the sense that a class is very finga and",
+                "and logic that I can in Kate instances",
+                "of a class modules are just behaviors",
+                "their distinctive methods and we'll talk",
+                "all about this later it's not important",
+                "for the proper what we're doing right",
+                "now",
+                "and okay while you're all and Lib which",
+                "basically goes through all of these",
+                "files and loads them into memory so to",
+                "read the artists class it'll read the",
+                "genre class or read my music importer",
+                "class my music library controller and my",
+                "song class and then also this module"
+            ]
+        },
+        {
+           start_offset: "05:03",
+             end_offset: "05:36",
+                bullets: [
+                "called findable okay which we don't need",
+                "to worry about right now okay that's",
+                "that's basing my environment um and also",
+                "whenever like I work on a new project",
+                "this is called onboarding where like",
+                "before you start writing code in a",
+                "project you kind of have to get a sense",
+                "of how the thing works when I look at",
+                "this I kind of think to myself okay",
+                "I had main classes like artists genre",
+                "and song and we cobbled model right they",
+                "basically are models for things that",
+                "exist in my in my domains logic so this"
+            ]
+        },
+        {
+           start_offset: "05:36",
+             end_offset: "06:03",
+                bullets: [
+                "is clearly about music right and of",
+                "course   in a music domain I expect to see",
+                "things like an artist a genre and a song",
+                "right well the things that normally talk",
+                "to the database and save themselves egos",
+                "these are just pure Ruby objects what we",
+                "call pain like the word was poor oh and",
+                "if things were plain old Ruby objects",
+                "okay which is like a vanilla class and",
+                "look at this song class and I can see"
+            ]
+        },
+        {
+           start_offset: "06:03",
+             end_offset: "06:42",
+                bullets: [
+                "that as a name and an artist in a genre",
+                "and I can kind of read all these methods",
+                "and see what they can do but another",
+                "thing I can do to get a sense of what my",
+                "objects are capable of while I on board",
+                "onto this project is run my test food",
+                "this is gonna be really cool",
+                "he's making the teacher voice many",
+                "bricks",
+                "cool so actually watch this so what I",
+                "did over here this is some cool like CLI"
+            ]
+        },
+        {
+           start_offset: "06:42",
+             end_offset: "07:03",
+                bullets: [
+                "scoff",
+                "I ran r-spec with my format being HTML",
+                "and this is a bash man that takes the",
+                "output from one from from your first",
+                "command and puts it puts it into this",
+                "file that makes sense so now I have",
+                "SPECT out HTML and it will actually HTML",
+                "pecks page that r-spec generated that"
+            ]
+        },
+        {
+           start_offset: "07:03",
+             end_offset: "07:33",
+                bullets: [
+                "makes sense what I just did because",
+                "otherwise I'll set our spec formatting",
+                "to wall it would just spit out all the",
+                "thing on the command line which is not",
+                "helpful right ok so you just have it do",
+                "the HTML and you can just load up the",
+                "file and look at it in the browser now",
+                "yeah right it'll look really cool and",
+                "we'll see that's not work it won't work",
+                "the way I wanted it to",
+                "well our spec is capable of generating",
+                "this like really beautiful documentation",
+                "tell you all about your domain right"
+            ]
+        },
+        {
+           start_offset: "07:33",
+             end_offset: "08:03",
+                bullets: [
+                "which is why we why the way we write our",
+                "tests like a nitrate things like you",
+                "know song basics and I say describe song",
+                "describe initialize with name this is",
+                "what this is how our spec uses that so I",
+                "know that I can initialize a song with a",
+                "name and I can set its name and I have",
+                "song calls a class method that returns",
+                "the class variable out at all I have",
+                "destroy all that resets that at all",
+                "class variable to an empty array I have",
+                "saved and we pound to commentate an",
+                "instance method and we use a dot to"
+            ]
+        },
+        {
+           start_offset: "08:03",
+             end_offset: "08:33",
+                bullets: [
+                "commentate a class method okay you guys",
+                "are following this one yeah awesome I'm",
+                "having a great time so so we have saved",
+                "and that adds a song to the idle",
+                "instance variable create which",
+                "initializes and save the song and like",
+                "artists basically the same kind of",
+                "functionality is a pretty basic",
+                "classroom they just represent the",
+                "properties of these objects other",
+                "solution ships like a song can have many",
+                "soft an artist have many songs a song"
+            ]
+        },
+        {
+           start_offset: "08:33",
+             end_offset: "09:02",
+                bullets: [
+                "can belong to an artist and so forth and",
+                "so forth ok and again the domain is not",
+                "going to be super important right now",
+                "but just realize that like this is what",
+                "this is one reason why testing is so",
+                "great like this kind of documentation",
+                "not only does it does it make sure your",
+                "code actually works it just like you",
+                "know is really helpful right okay so uh",
+                "and then you know I'm in my console",
+                "another thing I like to do other on",
+                "board is kind of like get intimate with",
+                "this and like you know make some artists"
+            ]
+        },
+        {
+           start_offset: "09:02",
+             end_offset: "09:37",
+                bullets: [
+                "right so there's MJ or itís not new",
+                "okay and I send the wrong number of",
+                "arguments I'm going to guess that almost",
+                "footballer name all right awesome",
+                "yeah I got MJ and then I can maybe say",
+                "like let's make a song like beat it and",
+                "then I want to do like MJ I saw like in",
+                "that artist documentation this method",
+                "called add song right so songs and"
+            ]
+        },
+        {
+           start_offset: "09:37",
+             end_offset: "10:05",
+                bullets: [
+                "artists and I says adding a song ten",
+                "artists and says pound add song and so",
+                "forth and when I think about this why",
+                "don't I just do this right I can guess",
+                "that songs is an array property on an",
+                "artist right yeah I mean I look at that",
+                "because I can just say like MJ songs now",
+                "returns to me an array so why don't I",
+                "want to push this song on to that array",
+                "why would I want to use this axel method"
+            ]
+        },
+        {
+           start_offset: "10:05",
+             end_offset: "10:32",
+                bullets: [
+                "so that it talks to the artist and so",
+                "right well I want to use it is because",
+                "the domain has it programmers that let",
+                "the piano key you right and what that is",
+                "that the artists object has a method",
+                "called add song kind of tells me I",
+                "should probably use it and the reason",
+                "why and which is that like if I was",
+                "really building this library for real I"
+            ]
+        },
+        {
+           start_offset: "10:32",
+             end_offset: "11:05",
+                bullets: [
+                "would actually prevent this from",
+                "actually being able to happen right I",
+                "would I would want to get an error when",
+                "anyone tried to do this because if they",
+                "did like this it's not gonna assign the",
+                "artist to the song right one sense yeah",
+                "yeah I always go about coding that in",
+                "where somebody can do",
+                "Wilson's I was hoping I was hoping you",
+                "were can asking that okay all right no",
+                "let's do it so the problem is but we",
+                "have an attribute reader for songs right"
+            ]
+        },
+        {
+           start_offset: "11:05",
+             end_offset: "11:36",
+                bullets: [
+                "that's best inform that NJ songs is",
+                "exposing this array right I need to shut",
+                "that one because I can't let it um let",
+                "it allow me to read directly from the",
+                "songs array because then someone can",
+                "push on to it so I'm just gonna change",
+                "this if I want to take out I shall not",
+                "leave the writer in because why not",
+                "right and now already I've basically so"
+            ]
+        },
+        {
+           start_offset: "11:36",
+             end_offset: "12:08",
+                bullets: [
+                "I have this task I have this method",
+                "reload that comes from icon for my rake",
+                "file alright I'm sorry you still have",
+                "self dot all defined though right so",
+                "it's but I'm gonna expose it um no I'm",
+                "gonna enter in a second so this is",
+                "reload re reads all my files",
+                "self not all is a different concept",
+                "double return um so all the values are"
+            ]
+        },
+        {
+           start_offset: "12:08",
+             end_offset: "12:35",
+                bullets: [
+                "all variable right and what's the value",
+                "the all variable that I do at the moment",
+                "but okay so here's how it works if I say",
+                "artists dot all because self dot all is",
+                "a class method right right Paul said",
+                "artists not all just semantically what",
+                "do you expect to get back oh very well I",
+                "mean that's like that's pretty notable"
+            ]
+        },
+        {
+           start_offset: "12:35",
+             end_offset: "13:02",
+                bullets: [
+                "right but conceptually if I'm asking",
+                "capital A artists right not all so the",
+                "class method all on the artist class",
+                "yeah but maybe it does it returns to me",
+                "all the artists there right my save MJ",
+                "and then I say artist at all it'll be",
+                "there",
+                "I'm getting an array of all the artists",
+                "and if I make another artist like artist",
+                "create which basically saves the artist"
+            ]
+        },
+        {
+           start_offset: "13:02",
+             end_offset: "13:34",
+                bullets: [
+                "upon and stand upon instantiation",
+                "if not create fun and now I say artist",
+                "at all what do you expect in there",
+                "Dakota bull my projects and then yeah",
+                "okay so conceptually what artist at all",
+                "does is it returns us a list of all the",
+                "artists that are in memory court oh but",
+                "it doesn't allow you to write directly",
+                "to the all well again right now we could",
+                "do that if we wanted but it'd be a bad"
+            ]
+        },
+        {
+           start_offset: "13:34",
+             end_offset: "14:01",
+                bullets: [
+                "idea",
+                "right but we're not talking about",
+                "artists at all here we're talking about",
+                "the instance method songs right so I",
+                "could say MDM J solid right it's a",
+                "different concept and when we're trying",
+                "to prevent is this right we don't want",
+                "you to be able to do that that is bad",
+                "right because now if I'm going to beat",
+                "it and I ask feed it for its artist who",
+                "should we get back should be Michael",
+                "Jackson but it's not going to gain any"
+            ]
+        },
+        {
+           start_offset: "14:01",
+             end_offset: "14:43",
+                bullets: [
+                "luck right exactly so this is dangerous",
+                "code we need to prevent other",
+                "programmers from ever being able to do",
+                "what I just did and I want to show you",
+                "guys how to do that okay the first",
+                "problem that this method exists at all",
+                "we don't know right so I'm going to racy",
+                "if I reload my comic my console what I",
+                "did was I shut off the heater for songs",
+                "right so now I can't ask I can't ask",
+                "MJ for songs well hold on one second hmm",
+                "let me exit and start again all right so",
+                "I'd say because artists create good"
+            ]
+        },
+        {
+           start_offset: "14:43",
+             end_offset: "15:00",
+                bullets: [
+                "alright now if I say emptied out songs",
+                "what's going to happen there no comic",
+                "beautiful because they're all but you",
+                "can see though that there is the",
+                "instance variable at songs right like I",
+                "could do this really dirty thing that I",
+                "would never do and say instance variable"
+            ]
+        },
+        {
+           start_offset: "15:00",
+             end_offset: "15:39",
+                bullets: [
+                "get yeah",
+                "and like reach an object and pull that",
+                "out but we never do that so okay so now",
+                "what I want to basically do is define my",
+                "own songs method okay",
+                "here's I'm going to do I'm going to",
+                "return songs Duke got freeze anyone",
+                "guess what that's where that does but",
+                "we'll give the value a song but it won't",
+                "let you change it that's correct"
+            ]
+        },
+        {
+           start_offset: "15:39",
+             end_offset: "16:05",
+                bullets: [
+                "let's read this try to be a little again",
+                "oh because it reloads the class okay so",
+                "now alright this is our test you ready",
+                "so there's the array right and if I if I",
+                "try to do this break",
+                "tada or we're right now let's make it",
+                "really pretty oh there's gonna be so"
+            ]
+        },
+        {
+           start_offset: "16:05",
+             end_offset: "17:28",
+                bullets: [
+                "much fun",
+                "and the reason you put the dupe in there",
+                "is because you wanted to freeze a copy",
+                "of it non-community actual one right",
+                "exactly right Wow let's make it really",
+                "really fun ready okay all right I'm",
+                "gonna have really I don't have a lot of",
+                "fun here hold on one second",
+                "oh I didn't get it what you need the"
+            ]
+        },
+        {
+           start_offset: "17:28",
+             end_offset: "18:01",
+                bullets: [
+                "message just keeps going on is that this",
+                "error is occurring not in the scope of",
+                "this method you get the message best",
+                "I'll compute I just don't do this ever",
+                "happens right like this begin rescue is",
+                "not happening at the right time I show",
+                "you what I mean by that yeah it's",
+                "happening over here on line five not on",
+                "line 18 because this method already",
+                "resolved at this point the method",
+                "resolves before a call push does that"
+            ]
+        },
+        {
+           start_offset: "18:01",
+             end_offset: "19:07",
+                bullets: [
+                "make sense right so that's why so I can",
+                "do something else though let me look so",
+                "what I'm thinking is maybe I can attach",
+                "a custom message to freeze or something",
+                "so that when I freeze the array I can",
+                "maybe tell Ruby hey can you please like",
+                "send this error or something nuts",
+                "yeah there's no way alright so we have",
+                "to just get the runtime error and that's",
+                "it but I was going to try to make it",
+                "pretty",
+                "I have other ideas of how I can make it",
+                "pretty but they're way too complex okay",
+                "yeah that's pretty cool anyway though",
+                "the concept of like kind of protecting",
+                "your objects that make sense yeah",
+                "awesome clearly have MJ we say add song",
+                "I'm gonna say song dot create beat it",
+                "and this should work uh for our privacy",
+                "awesome now if I say MJ dot songs",
+                "perfect right cool awesome"
+            ]
+        },
+        {
+           start_offset: "19:07",
+             end_offset: "20:18",
+                bullets: [
+                "great so that's kind of like again like",
+                "I think about when I'm getting on to a",
+                "new project I kind of want to get some",
+                "intimacy with these objects use go into",
+                "the console most good projects will ship",
+                "with a console source and I kind of want",
+                "to go in there and like um you know play",
+                "around a little bit and like get get a",
+                "sense of how these objects behave and",
+                "stuff like that okay let me just make",
+                "sure my test suite is still okay um so",
+                "I'm getting an error over here and I",
+                "kind of want to fix this because",
+                "something I what when I made this went",
+                "when I made this change I broke",
+                "something right so I'm going to go into",
+                "the spec on line 15 and I'm gonna see",
+                "what I broke and see if I can fix it",
+                "actually watch let's do that one out we",
+                "have nothing else to do today okay this",
+                "is the problem and it seems like",
+                "actually no one clue",
+                "we don't want havior in fact we want to",
+                "say right right because that's actually",
+                "what we mean now you cannot push a song"
+            ]
+        },
+        {
+           start_offset: "20:18",
+             end_offset: "21:02",
+                bullets: [
+                "on to the songs collection you must",
+                "explicitly use add some awesome cool oh",
+                "yeah that answers it um so that is like",
+                "a very advanced pattern like that is not",
+                "something uh you know anyone that would",
+                "ever expect like a dream developer able",
+                "to see but that is how it works and it's",
+                "you know I also just think about like",
+                "you know did you ever have an idea of",
+                "how you'd want your object to behave",
+                "it's definitely you can always do it and",
+                "you just have to like look up ways and",
+                "patterns and things like that okay um",
+                "alright so now what I want to do is I",
+                "want to I want to build my I want to",
+                "extend this domain this application"
+            ]
+        },
+        {
+           start_offset: "21:02",
+             end_offset: "22:09",
+                bullets: [
+                "right and kind of like I need to sit",
+                "down and think and here's what I want to",
+                "be able to do um I want to be able to",
+                "say rake generate site",
+                "when I run that task I want to generate",
+                "static HTML website in a directory",
+                "called site okay and in that site",
+                "I should have artists okay and index dot",
+                "HTML file has links to all the artists",
+                "one was for artists I want to generate",
+                "like an artist's index.html this page",
+                "should have a list of all artists links",
+                "to individual artists show page right so"
+            ]
+        },
+        {
+           start_offset: "22:09",
+             end_offset: "23:16",
+                bullets: [
+                "like one then I want to have like",
+                "artists from dot HTML I'm I'm going to",
+                "call it artist index we call this artist",
+                "show right should list all of the songs",
+                "for an artist each song should link to",
+                "the song show page right and then I have",
+                "songs index that HTML same concepts and",
+                "then I have like songs show HTML right",
+                "and now I have a show the song name",
+                "right cool"
+            ]
+        },
+        {
+           start_offset: "23:16",
+             end_offset: "24:03",
+                bullets: [
+                "okay so that's kind of my plan and by",
+                "the way the first thing I would do in",
+                "real life is I would actually given I",
+                "mean what like what do you guys think I",
+                "my next thing I would do is you think I",
+                "would start like programming write kiss",
+                "that's right",
+                "I was all writing tests around this",
+                "right and like I one level like I mean",
+                "why not this is like you know we don't",
+                "we don't have anything else to do right",
+                "so let's just do it new file Oh 13 site",
+                "generators okay describe and by the way",
+                "guys like don't forget um",
+                "I won this before a lot in fact I've",
+                "done this exact project a lot before so"
+            ]
+        },
+        {
+           start_offset: "24:03",
+             end_offset: "25:27",
+                bullets: [
+                "like how did I come up with that class",
+                "site generator because like I'm looking",
+                "at these requirements and the object",
+                "that I want to be responsible for doing",
+                "all of these things is a new object in",
+                "my domain that sounds like some sort of",
+                "like machine that knows how to generate",
+                "website like websites right that's kind",
+                "of what I was thinking is that make",
+                "sense yeah cool whenever I have a new",
+                "requirement I always want to model that",
+                "requirements in some sort of objects",
+                "like that's what object orientation",
+                "means that you think about the",
+                "responsibility and then capsulation",
+                "before you do the implementation so I",
+                "don't care how this object works",
+                "I care what it does and when I think",
+                "like that I'm designing I'm not",
+                "programmed does that make sense yeah so",
+                "like you know and again like the way I'm",
+                "thinking about this is like um I don't",
+                "know takes a path to generate the site",
+                "in right so if I say like uh"
+            ]
+        },
+        {
+           start_offset: "25:27",
+             end_offset: "26:08",
+                bullets: [
+                "right something like that um yeah right",
+                "that's kind of that's meeting this",
+                "requirement right so that's that this",
+                "rate cache right it's basically going to",
+                "do something like this the whole great",
+                "task is going to basically I mean I just",
+                "write it so let's just do it something",
+                "like that all right",
+                "I probably also have to go do this music",
+                "importing thing though because I want I"
+            ]
+        },
+        {
+           start_offset: "26:08",
+             end_offset: "27:04",
+                bullets: [
+                "want to have artists and stuff loaded",
+                "and I know that I have this object in my",
+                "lib called the musical order that if I",
+                "differentiate it with the path to a",
+                "bunch of mp3s like the ones in here it",
+                "will make me create everything I need",
+                "right right so like if I go into my",
+                "console and right now if I say artist at",
+                "all dot size there are zero artists if I",
+                "make a music importer that points to the",
+                "DB directory and I say import and now I",
+                "say artist at all nothing happened let's",
+                "try it one more time trinkets within",
+                "another folder um what do you say",
+                "I think it's within another folder yeah",
+                "mp3 I don't there we go okay right so",
+                "basically when you copy that idea into"
+            ]
+        },
+        {
+           start_offset: "27:04",
+             end_offset: "28:05",
+                bullets: [
+                "this into the first step of this rake",
+                "task right so that I import all my songs",
+                "and then I generate my website right",
+                "cool awesome so it generates the site",
+                "okay cool that's it in one basic you is",
+                "start checking out each of these",
+                "requirements",
+                "right so I want to make a website",
+                "basically something that says generate",
+                "an index.html and I'm going to represent",
+                "everything through a method right every",
+                "piece of functionality I want I'll be",
+                "able to describe generate index so you",
+                "know again like I'm thinking like it",
+                "makes an index.html file within the path",
+                "right so if I do this site generator dot",
+                "generate index I don't want to try to",
+                "write the expectation or at least tell"
+            ]
+        },
+        {
+           start_offset: "28:05",
+             end_offset: "29:09",
+                bullets: [
+                "me like how would I test this how would",
+                "I know if this method worked expect the",
+                "site generator directory or the site",
+                "directory to have an index duck hmm",
+                "oh my god you all right yeah cool so now",
+                "we get start programming this is me",
+                "super fun because now that I have like a",
+                "sense of what I'm where I'm going I can",
+                "follow test-driven development tada",
+                "cool unleash lies constant site"
+            ]
+        },
+        {
+           start_offset: "29:09",
+             end_offset: "30:09",
+                bullets: [
+                "generator how do I fix that oh pretty",
+                "good",
+                "that's right Nick one and by the way",
+                "this is why they call it test-driven",
+                "development",
+                "my tests are now going to drive the way",
+                "I make my program because every failure",
+                "I'm going to get is gonna have an",
+                "obvious answer right that's good",
+                "well ok I forgot to actually define",
+                "class",
+                "awesome cool how do I fix this",
+                "define the initialize method I said an",
+                "argument - yeah",
+                "you too much yeah nothing normally we go",
+                "like one step at a time",
+                "um but like because we have brains we",
+                "need to skip ahead right now hey that's",
+                "not right"
+            ]
+        },
+        {
+           start_offset: "30:09",
+             end_offset: "31:09",
+                bullets: [
+                "oh we won define method path fix this",
+                "yeah I'm not you're just gonna make a",
+                "reader because once you generate decide",
+                "I don't want you to be able to change",
+                "the path yeah cool how do I fix that",
+                "define generating yep okay wait a minute",
+                "that isn't it it's generated its",
+                "supposed to ticket argument or no I",
+                "don't think so"
+            ]
+        },
+        {
+           start_offset: "31:09",
+             end_offset: "32:04",
+                bullets: [
+                "because all it's all I mean all now",
+                "we're saying is that it knows to",
+                "generate an index dot HTML file right",
+                "where why did you think it needed to",
+                "take an argument hmm well cuz the",
+                "argument or camera um or why wasn't from",
+                "there it was from well exist yeah",
+                "exactly right it was it was that that",
+                "was the mistake right so I was just miss",
+                "using this method file dot right Oh is",
+                "there right I mean I'll go a little",
+                "slower so sorry about that Dakota like",
+                "please always slow me down like when I",
+                "see this argument our wrong number of",
+                "arguments I'm looking at where that",
+                "occurred right it occurred",
+                "when I said site generator line nine",
+                "right from generate index from my spec",
+                "that makes that no I'm sorry because I",
+                "saw that really quickly um but you know",
+                "yeah I'll try to slow down there but"
+            ]
+        },
+        {
+           start_offset: "32:04",
+             end_offset: "33:03",
+                bullets: [
+                "always ask like if you guys don't know",
+                "how I knew something just asked me",
+                "because I'm very good at explaining it",
+                "but sometimes especially if like I'm",
+                "having fun",
+                "hi I go a little fast okay yes you can",
+                "ask a question when we say found out",
+                "right",
+                "are we just creating are we creating a",
+                "new path are we creating a new file",
+                "within the directory so we're trying to",
+                "actually create a new file within a",
+                "directory and then why it's not working",
+                "it's because this directory does not",
+                "exist",
+                "okay okay so now my question is you can",
+                "bash command or no you know you always",
+                "want to program in as few languages as",
+                "possible yeah hey so as long as I'm in",
+                "Ruby I'm not gonna I'm not going to like",
+                "spin out to bash and use make Durer I",
+                "kind of want to use rubies in the",
+                "limitation of make derp right okay okay"
+            ]
+        },
+        {
+           start_offset: "33:03",
+             end_offset: "34:08",
+                bullets: [
+                "cool",
+                "I'm also so like I looked it up but I",
+                "want to show you guys a better way to do",
+                "it because there's a library called file",
+                "to utils in Ruby that's a little more",
+                "powerful for manipulating files and file",
+                "structures I know I'm going to need it",
+                "later something's can use it now I want",
+                "to use this version file utils make",
+                "derpy because it creates all directories",
+                "and all of its parents which is going to",
+                "be way faster and easier yeah okay",
+                "so you can just put in the full pack",
+                "what I want it has to be a football club",
+                "it can't be like a relative now if you",
+                "know it can always be a relative path oh",
+                "okay so file utils as part of the",
+                "standard Ruby library so what do I need",
+                "what do I need to do to get this into my",
+                "program because right now if I try to",
+                "use file utils within my console it's",
+                "not going to work right because",
+                "shit okay it does work and I know why",
+                "now it's a hundred em this gem require",
+                "all already required it oh but I was"
+            ]
+        },
+        {
+           start_offset: "34:08",
+             end_offset: "35:05",
+                bullets: [
+                "gonna add into my environment but you",
+                "know I just got lucky",
+                "but this is what I was going to do and",
+                "actually it's safer to do that too just",
+                "to make sure",
+                "in this sense that if this dependency",
+                "was removed of require all I would still",
+                "want to make sure that I had the photos",
+                "library looted okay so now basically",
+                "when you do the site generator I'm just",
+                "going to make the second you you",
+                "instantiate a site generator I'm going",
+                "to make that path now my test suite",
+                "should work expected true I wrote a bad",
+                "test so I'm reading this as expected",
+                "true to respond to true perhaps you",
+                "meant be truth or be truth II which is",
+                "what I did though I will connect and",
+                "then also by the way I don't kind of I'm"
+            ]
+        },
+        {
+           start_offset: "35:05",
+             end_offset: "36:17",
+                bullets: [
+                "not super super into this syntax and",
+                "because I'm curious I want to look up if",
+                "there's the better pattern in r-spec for",
+                "checking of a file exists I feel like",
+                "it's a really common use case and this",
+                "doesn't feel super elegant you know like",
+                "I'm level I'm saying file that exists to",
+                "be true thing I'd much rather say like",
+                "oh no and just check",
+                "yeah they're saying that this is the",
+                "nicest so far but it's pretty old spec",
+                "file - whoo that is that's very",
+                "attractive does that work I really just",
+                "I love that oh my god look at that code",
+                "nice how can you not love Ruby like I"
+            ]
+        },
+        {
+           start_offset: "36:17",
+             end_offset: "37:04",
+                bullets: [
+                "mean is that like expect file to exists",
+                "at this path that's like what and by the",
+                "way like I really do not know that",
+                "exists but like I always think that like",
+                "once I get it working that's that's only",
+                "once I get it working in the most direct",
+                "manner that I know how to do I then stop",
+                "and say myself wait is there a better",
+                "way and like that's how you improve the",
+                "programmers that like you use those",
+                "opportunities to learn one thing new",
+                "right well then it's a couple things",
+                "because you figure out how to solve the",
+                "problem a couple different ways -",
+                "exactly all right so um now the other",
+                "thing though is isn't this work so now",
+                "if I like you know go into my console in",
+                "fact there's file should now exist which"
+            ]
+        },
+        {
+           start_offset: "37:04",
+             end_offset: "38:00",
+                bullets: [
+                "I don't like right because one level I",
+                "just run my test suite and I got like a",
+                "real I got like a real site folder right",
+                "we don't want that we want to put this",
+                "in a temp directory when we have our",
+                "test suite that makes sense that way",
+                "like I'm not you know overriding",
+                "someone's website when I run my test",
+                "suite yeah all right so imagine gonna",
+                "remove that directory and run the suite",
+                "again and then we can look at what is in",
+                "temp site index and that's not really",
+                "good well that's not good for a lot of",
+                "reasons cuz one that w+ is not at all",
+                "what I meant in there right what do we",
+                "want in this file we want HTML right",
+                "okay wasn't that in your chest it was it",
+                "I thought I was white right mode what",
+                "this wants is",
+                "contents of the file okay right now",
+                "here's where it's gonna suck are you",
+                "guys ready"
+            ]
+        },
+        {
+           start_offset: "38:00",
+             end_offset: "39:22",
+                bullets: [
+                "this is going to be the HTML I want okay",
+                "we're going to start with this is gonna",
+                "be super fun I'm very excited um how do",
+                "we feel about this",
+                "well that doesn't even work because",
+                "these have to start escaping them that",
+                "sucks right yeah okay so I'm going to",
+                "show you guys a few ways to fix this",
+                "ever know it is what we call that what"
+            ]
+        },
+        {
+           start_offset: "39:22",
+             end_offset: "40:04",
+                bullets: [
+                "we call these things it's called a here",
+                "doc what I hear dr. your doctor it's",
+                "basically a way to write a multi-line",
+                "string that does need to be escaped",
+                "right and it works by carrot carrot -",
+                "you give it a delimiter which is the",
+                "language and then HTML like so this",
+                "could have been anything as long as I",
+                "use it again to close the document okay",
+                "and the benefit is if you use HTML a",
+                "programming language Adam and sublime",
+                "will actually recolor this according the",
+                "syntax of that language okay so it's"
+            ]
+        },
+        {
+           start_offset: "40:04",
+             end_offset: "41:03",
+                bullets: [
+                "really common to use here Docs for",
+                "instance when you write sequel in Ruby",
+                "you'll do something like",
+                "this looks okay and now a show that's",
+                "syntax highlighting sequel cool alright",
+                "so this is nice and now I'm going to say",
+                "that okay and that'll work",
+                "cool we're going to take it up a notch",
+                "in a second awesome part one right right",
+                "now one thing I guess are two things I",
+                "want to think about one is what if I",
+                "wanted to put the count of artists like",
+                "over here so like right over there i",
+                "wanna i want to dynamically say how many",
+                "artists are currently in the listing how",
+                "might I do that interpolation yep",
+                "could you just like artist that"
+            ]
+        },
+        {
+           start_offset: "41:03",
+             end_offset: "42:06",
+                bullets: [
+                "background I got um artists not on",
+                "account yep well and that should work",
+                "it'll be really cool alright and now",
+                "let's try this",
+                "nope regenerate the website by the way",
+                "this is why this is not a rails or",
+                "Sinatra application we're Jenna this is",
+                "called a static website because um every",
+                "time you generated creates a new site",
+                "but once it's generated does nothing so",
+                "that didn't work or something is wrong",
+                "because there's no there's no artist oh",
+                "that actually makes sense right because",
+                "we're not actually generating the real",
+                "site where this is a test suite and we",
+                "never imported anything in there so to",
+                "run the actual task",
+                "it says undefined method call for site",
+                "generator so basically we want to say is",
+                "that call method right now should just",
+                "generate the index right cool all right"
+            ]
+        },
+        {
+           start_offset: "42:06",
+             end_offset: "43:01",
+                bullets: [
+                "and now if I open the real web site",
+                "awesome",
+                "pretty cool cool okay so here's the",
+                "problem",
+                "remember what I said you don't want to",
+                "write um well actually let's write a",
+                "test for this first",
+                "um this would be pretty fun uh did you",
+                "just write Ruby code in the middle of",
+                "HTML again I do that well is this really",
+                "HTML uh yeah no we're just this is just",
+                "a giant reading string right oh great",
+                "don't forget this it's just HTML is just",
+                "a string right Ruby doesn't know",
+                "anything about HTML it just knows about",
+                "strings so if you saw this that wouldn't",
+                "be confusing right or wouldn't be as",
+                "confusing at least right right because",
+                "yeah this is just string interpolation",
+                "right but this is just like when you do",
+                "these multi-line strings like this and"
+            ]
+        },
+        {
+           start_offset: "43:01",
+             end_offset: "43:50",
+                bullets: [
+                "have to escape it it's really ugly right",
+                "yeah yeah and you lose the syntax",
+                "highlighting so that's why we use here",
+                "Docs is to basically still create a ruby",
+                "string but you know give it like you",
+                "know not to escape quotes and things",
+                "like that but we can still interpolate",
+                "into them okay okay all right",
+                "um okay I'm gonna stop writing tests",
+                "only cuz we only have like another hour",
+                "um and I have to do an assessment with",
+                "someone so we stopped writing tests that",
+                "I can move a little faster okay",
+                "okay awesome um actually you know what",
+                "let's take like a five-minute breaks",
+                "it's actually been an hour and then",
+                "we'll move on to the next part okay all",
+                "right"
+            ]
+        }
+    ]
+}
